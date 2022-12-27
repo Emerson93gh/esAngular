@@ -2,14 +2,8 @@
   <div class="row">
     <div class="col">
       <h1>Listado de personas</h1>
-      <!-- Property Binding --><!-- Event Binding (click) -->
-      <button class="btn btn-primary" [disabled]="deshabilitar"
-      (click)="agregarPersona()">Agregar persona</button>
-      <p *ngIf="mostrar; else sinPersona"> {{ mensaje }} con el titulo de: {{ titulo }}</p>
-      <ng-template #sinPersona>
-        <p>No se agrego ninguna persona.</p>
-      </ng-template>
       <app-persona></app-persona>
+      <br />
 
       <!-- Event Binding (input)-->
       <!-- <label>Titulo persona: </label>
@@ -18,8 +12,23 @@
 
       <!-- Two-way Binding, agregamos FormsModule en app.module.ts -->
       <label>Titulo persona: </label>
-      <input type="text" class="form-control" [(ngModel)]="titulo">
-      <p> {{ titulo }} </p>
+      <input type="text" class="form-control" [(ngModel)]="titulo" />
+      <p>{{ titulo }}</p>
+      <br />
+      <!-- Property Binding --><!-- Event Binding (click) -->
+      <button
+        class="btn btn-primary"
+        [disabled]="deshabilitar"
+        (click)="agregarPersona()"
+      >
+        Agregar persona
+      </button>
+      <p *ngIf="mostrar; else sinPersona">
+        {{ mensaje }} con el titulo de: {{ titulo }}
+      </p>
+      <ng-template #sinPersona>
+        <p>No se agrego ninguna persona.</p>
+      </ng-template>
     </div>
   </div>
 </div>
