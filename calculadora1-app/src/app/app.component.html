@@ -1,46 +1,15 @@
 <div class="container">
   <h1>{{ titulo }}</h1>
-  <form>
-    <div class="form-group d-grid gap-2">
-      <label class="p-2">Operando A</label>
-      <input
-        type="number"
-        class="p-2 form-control"
-        placeholder="Escribe el Operando A"
-        [(ngModel)]="operandoA"
-        name="operandoA"
-      />
-    </div>
-    <div class="form-group d-grid gap-2">
-      <label class="p-2">Operando B</label>
-      <input
-        type="number"
-        class="p-2 form-control"
-        placeholder="Escribe el Operando B"
-        [(ngModel)]="operandoB"
-        name="operandoB"
-      />
-    </div>
-    <div class="btn-group flex-wrap" role="group">
-      <button type="submit" class="btn btn-primary mt-3" (click)="sumar()">
-        Sumar
-      </button>
-      <button type="submit" class="btn btn-secondary mt-3" (click)="restar()">
-        Restar
-      </button>
-      <button type="submit" class="btn btn-success mt-3" (click)="multiplicar()">
-        Multiplicar
-      </button>
-      <button type="submit" class="btn btn-light mt-3" (click)="dividir()">
-        Dividir
-      </button>
-      <button type="submit" class="btn btn-dark mt-3" (click)="modulo()">
-        Modulo
-      </button>
-    </div>
-  </form>
-  <div class="d-grid gap-2">
-    <p class="p-2">Resultado: &nbsp; {{ resultado }}</p>
-    <label class="p-2">Modulo: &nbsp; {{ val }} </label>
-  </div>
+
+  <!-- Event Binding, datos entre componentes: de hijo a padre -->
+  <app-formulario
+    (miResultado)="procesarResultado($event)"
+    (miValor)="procesarValor($event)"
+  ></app-formulario>
+
+  <!-- Property Binding, datos entre componentes: de padre a hijo -->
+  <app-resultado
+    [resultadoHijo] = "resultado"
+    [valHijo] = "val"
+  ></app-resultado>
 </div>
